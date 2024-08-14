@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import styled, { createGlobalStyle } from "styled-components";
+import { Menu } from "./components/Menu";
+import { Content } from "./components/Content";
+
+const AppContainer = styled.div`
+  background-color: #221c35;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const GlobalStyle = createGlobalStyle`
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <GlobalStyle />
+      <Menu focusKey="MENU" />
+      <Content />
+    </AppContainer>
   );
 }
 
